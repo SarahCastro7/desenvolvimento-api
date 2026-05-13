@@ -3,21 +3,15 @@ import { legumesService } from "../services/legumesServices.js";
 
 const routeLegumes = express.Router();
 
-// GET - listar todos os legumes
 routeLegumes.get("/", async (req, res) => {
     const legume = await legumesService.getAll();
     res.json(legume);
 });
 
-// GET por ID
+
 routeLegumes.get("/:id", async (req, res) => {
     const { id } = req.params;
 
-    // Validação: verifica se é número e se é positivo
-
-    if (isNaN(id) || Number(id) <= 0) {
-        return res.status(400).json({ message: "ID inválido. Deve ser um número positivo." });
-    }
     const legume = await legumesService.getById(id);
 
     if (!legume) {
@@ -26,7 +20,7 @@ routeLegumes.get("/:id", async (req, res) => {
     res.json(legume);
 });
 
-// POST - criar legume
+
 routeLegumes.post("/", async (req, res) => {
 
     const { nome } = req.body;
@@ -42,7 +36,7 @@ routeLegumes.post("/", async (req, res) => {
     res.status(201).json(legume);
 });
 
-// PATCH - atualização parcial
+
 routeLegumes.patch("/:id", async (req, res) => {
     
     const { id } = req.params
@@ -55,7 +49,7 @@ routeLegumes.patch("/:id", async (req, res) => {
     res.json(legumeAtualizado);
 });
 
-// PUT - substituição completa
+
 routeLegumes.put("/:id", async (req, res) => {
     const { id } = req.params;
 
@@ -71,14 +65,13 @@ routeLegumes.put("/:id", async (req, res) => {
     res.json(legumeAtualizado);
 });
 
-// DELETE
+
 routeLegumes.delete("/:id", async (req, res) => {
 
     const { id } = req.params;
     const removido = await legumesService.deleteLegume(id);
 
     // Mensagem de erro em JSON caso não encontre
-
     if (!removido) {
         return res.status(404).json({
             message: "Erro: legume não encontrado para remoção."
