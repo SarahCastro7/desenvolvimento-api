@@ -14,7 +14,7 @@ refriRoute.get('/', async (req, res) => {
     }
 });
 
-//get by id
+// get by id
 refriRoute.get('/:id', async (req, res) => {
     try {
         const result = await refriService.getByIdrefris(req.params.id);
@@ -36,7 +36,7 @@ refriRoute.post('/', async (req, res) => {
     }
 });
 
-//put
+// put
 refriRoute.put('/:id', async (req, res) => {
     try {
         const result = await refriService.updaterefris(req.params.id, req.body.nome);
@@ -47,7 +47,7 @@ refriRoute.put('/:id', async (req, res) => {
     }  
 });
 
-//patch
+// patch
 refriRoute.patch('/:id', async (req, res) => {
     try {
         const result = await refriService.patchrefris(req.params.id, req.body.nome);

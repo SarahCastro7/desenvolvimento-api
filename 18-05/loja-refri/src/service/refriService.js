@@ -29,7 +29,7 @@ class RefriService {
         }
     }
 
-    async createrefris(nome) {
+    async postrefris(nome) {
         try {
             const result = await pool.query(
                 'INSERT INTO refrigerantes (nome) VALUES ($1) RETURNING *',
@@ -39,19 +39,6 @@ class RefriService {
         } catch (error) {
             console.error('Erro ao criar refrigerantes:', error);
             throw new Error('Erro ao criar refrigerantes');
-        }
-    }
-
-    async updaterefris(id, nome) {
-        try {
-            const result = await pool.query(
-                'UPDATE refrigerantes SET nome = $1 WHERE id = $2 RETURNING *',
-                [nome, id]
-            )
-            return result.rows[0]
-        } catch (error) {
-            console.error('Erro ao atualizar refrigerantes:', error);
-            throw new Error('Erro ao atualizar refrigerantes');
         }
     }
 
