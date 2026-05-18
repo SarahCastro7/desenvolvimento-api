@@ -1,7 +1,6 @@
-
-//aqui tem que ter aql negocio de try e catch
-
 import { pool } from "../config/db.js";
+
+//no service precisa ter o try e o catch para tratar os erros, e o throw para lançar o erro para o controller
 
 class RefriService {
 
