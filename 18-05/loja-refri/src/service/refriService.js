@@ -1,15 +1,16 @@
-import pool from '../config/db.js'
 
 //aqui tem que ter aql negocio de try e catch
 
-class refriService {
+import { pool } from "../config/db.js";
+
+class RefriService {
 
     async getAllrefris() {
         try {
             const result = await pool.query(
                 'SELECT * FROM refrigerantes'
             )       
-            
+            return result.rows;
         } catch (error) { 
             console.error('Erro ao listar refrigerantes:', error);
             throw new Error('Erro ao listar refrigerantes');
@@ -22,6 +23,7 @@ class refriService {
                 'SELECT * FROM refrigerantes WHERE id = $1',
                 [id]
             )  
+            return result.rows[0];
         } catch (error) {
             console.error('Erro ao buscar refrigerantes:', error);
             throw new Error('Erro ao buscar refrigerantes');
@@ -94,4 +96,4 @@ class refriService {
     } 
 }
 
-export default new refriService()
+export const refriService = new RefriService()

@@ -1,5 +1,5 @@
 import express from 'express';
-import routerefri from './routes/refriRoutes.js';
+import { refriRoute } from './routes/refriRoutes.js';
 
 //mais para frente precisa fazer o html e css, nao vamos usar html puro e sim com react e a biblioteca tailwind
 
@@ -11,7 +11,7 @@ app.get('/' , (req,res) => {
     res.send("src");
 });
 
-app.use('/refrigerantes', routerefri);
+app.use('/refrigerantes', refriRoute);
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
