@@ -36,7 +36,7 @@ class refriService {
             )
             return result.rows[0]
         } catch (error) {
-            console.error('Erro ao criar refrigerantes:', error);
+            console.error('Erro ao criar refrigerantes  :', error);
             throw new Error('Erro ao criar refrigerantes');
         }
     }
@@ -80,13 +80,13 @@ class refriService {
         }
     }
 
-    async deleterefris(id) {
+    async deleterefri(id) {
         try {
             await pool.query(
                 'DELETE FROM refrigerantes WHERE id = $1',
                 [id]
             )
-            return { message: 'Refrigerante deletado com sucesso' }
+            return { message: 'refrigerante deletado com sucesso' }
         } catch (error) {
             console.error('Erro ao deletar refrigerante:', error);
             throw new Error('Erro ao deletar refrigerante');
