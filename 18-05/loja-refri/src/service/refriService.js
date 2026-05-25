@@ -1,9 +1,7 @@
-import { pool } from "../config/db.js";
+import { pool } from '../config/db.js';
 import 'dotenv/config'
 
-console.log("password aqqq", process.env.DB_NOME);
-
-
+// console.log("password aqqq", process.env.DB_NOME);
 //no service precisa ter o try e o catch para tratar os erros, e o throw para lançar o erro para o controller
 
 class RefriService {

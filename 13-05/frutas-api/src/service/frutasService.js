@@ -1,5 +1,5 @@
-import pool from '../config/db.js'
-
+import { pool } from '../config/db.js';
+import 'dotenv/config'
 //aqui tem que ter aql negocio de try e catch
 
 class frutasService {
